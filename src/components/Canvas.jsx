@@ -10,6 +10,7 @@ import StartGame from './StartGame';
 import Title from './Title';
 import Leaderboard from './Leaderboard';
 import { signIn } from 'auth0-web';
+import CannonBall from './CannonBall';
 
 const Canvas = (props) => {
   const gameHeight = 1200;
@@ -30,6 +31,7 @@ const Canvas = (props) => {
       preserveAspectRatio="xMaxYMax none"
       onMouseMove={props.trackMouse}
       viewBox={viewBox}
+      onClick={props.shoot}
     >
       <defs>
         <filter id="shadow">
@@ -38,6 +40,12 @@ const Canvas = (props) => {
       </defs>
       <Sky />
       <Ground />
+      {props.gameState.cannonBalls.map(cannonBall => (
+        <CannonBall
+          key={cannonBall.id}
+          position={cannonBall.position}
+        />
+      ))}
       <CannonPipe rotation={props.angle} />
       <CannonBase />
       <CurrentScore score={15} />
@@ -46,7 +54,7 @@ const Canvas = (props) => {
         <g>
           <StartGame onClick={() => props.startGame()} />
           <Title />
-          <Leaderboard currentPlayer={leaderboard[6]} authenticate={signIn} leaderboard={leaderboard} />
+          <Leaderboard currentPlayer={props.currentPlayer} authenticate={signIn} leaderboard={props.players} />
         </g>
       }
 
