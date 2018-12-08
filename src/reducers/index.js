@@ -1,4 +1,4 @@
-import { MOVE_OBJECTS } from '../actions/index.js';
+import { MOVE_OBJECTS } from '../actions/';
 import moveObjects from './moveObjects';
 
 const initialState = {
