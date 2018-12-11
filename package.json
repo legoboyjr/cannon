@@ -14,12 +14,14 @@
     "styled-components": "^4.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build/",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "heroku-postbuild": "npm run build",
+    "start": "node server/"
   },
   "eslintConfig": {
     "extends": "react-app"

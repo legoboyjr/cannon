@@ -8,7 +8,7 @@ import io from 'socket.io-client';
 Auth0.configure({
   domain: 'legoboyjr.auth0.com',
   clientID: 'fgCoS3EnFqFahgakddOTPBjAqYnr9dRs',
-  redirectUri: 'http://localhost:3000/',
+  redirectUri: process.env.REACT_APP_REDIRECT_URI || 'http://localhost:3000/',
   responseType: 'token id_token',
   scope: 'openid profile manage:points',
   audience: 'https://aliens-go-home.digituz.com.br',

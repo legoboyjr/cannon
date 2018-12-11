@@ -3,6 +3,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const jwt = require('jsonwebtoken');
 const jwksClient = require('jwks-rsa');
+const port = process.env.PORT || 3001;
 
 const client = jwksClient({
   jwksUri: 'https://legoboyjr.auth0.com/.well-known/jwks.json'
@@ -48,6 +49,11 @@ io.on('connection', (socket) => {
   socket.on('new-max-score', newMaxScoreHandler);
 });
 
-http.listen(3001, () => {
+const staticPath = path.resolve(__dirname, '../build');
+app.use(express.static(staticPath));
+
+http.listen(port, () => {
   console.log('listening on port 3001');
 });
+
+
