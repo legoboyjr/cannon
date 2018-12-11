@@ -21,7 +21,8 @@
     "deploy": "gh-pages -d build/",
     "predeploy": "npm run build",
     "heroku-postbuild": "npm run build",
-    "start": "node server/"
+    "start": "node server/",
+    "postinstall": "cd server && npm install"
   },
   "eslintConfig": {
     "extends": "react-app"
