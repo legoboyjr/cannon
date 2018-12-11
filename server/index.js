@@ -1,9 +1,11 @@
-const app = require('express')();
+const express = require('express');
+const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const jwt = require('jsonwebtoken');
 const jwksClient = require('jwks-rsa');
 const port = process.env.PORT || 3001;
+const path = require('path');
 
 const client = jwksClient({
   jwksUri: 'https://legoboyjr.auth0.com/.well-known/jwks.json'
